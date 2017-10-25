@@ -31,7 +31,9 @@ struct chain_list{
 }
 chain_list_t;
 
-extern const linked_list_t* linked_list_get(const linked_list_t*, size_t);
+extern linked_list_t* linked_list_new();
+extern void linked_list_delete(linked_list_t*);
+extern const linked_list_t* linked_list_get(linked_list_t*, size_t);
 extern void linked_list_set(linked_list_t*, linked_list_t*, size_t);
 extern void linked_list_append(linked_list_t*, void*);
 extern void linked_list_insert(linked_list_t*, void*, size_t);

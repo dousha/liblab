@@ -5,10 +5,18 @@
 #include <stddef.h>
 
 #define in_range(n, l, r) (l < n && n < r)
-#define OFFSET_FUNC_DECL(type) \
+#define OFFSET_FUNC_IMPL(type) \
 void* type##_offset_func(const void* arr, size_t offset){ \
 	return ((void*) (((type##*) arr) + offset)); \
 }
+#define OFFSET_FUNC_DECL(type) \
+extern void* type##_offset_function(const void*, size_t)
+#define COMPARE_FUNC_DECL(type) \
+extern int8_t type##_compare_func(const void*, const void*)
+#define SWAP_FUNC_DECL(type) \
+extern void type##_swap_func(const void*, const void*)
+#define SORT_ALGO_DECL(name) \
+extern void name(const void*, size_t, offsetFunction, compareFunction, swapFunction)
 
 /// Offset function should return correct address of
 /// target array with a offset specified
@@ -24,22 +32,22 @@ typedef void (*swapFunction)(const void*, const void*);
 /// passed object pointer
 typedef void (*printFunction)(const void*);
 
-// some common offset functions
-extern void* int_offset_function(const void*, size_t);
+OFFSET_FUNC_DECL(int);
+OFFSET_FUNC_DECL(double);
 
-// some common compare functions
-extern int8_t int_compare_func(const void *, const void *);
-extern int8_t double_compare_func(const void *, const void *);
+COMPARE_FUNC_DECL(int);
+COMPARE_FUNC_DECL(double);
 
-// some common swap functions
-extern void int_swap_func(const void*, const void*);
+SWAP_FUNC_DECL(int);
+SWAP_FUNC_DECL(double);
 
 // some common print functions
 extern void int_print_func(const void*);
 
 extern void print_array(const void*, size_t, printFunction);
 
-extern void bubble_sort(const void*, size_t, offsetFunction, compareFunction, swapFunction);
-extern void quick_sort(const void*, size_t, offsetFunction, compareFunction, swapFunction);
+SORT_ALGO_DECL(bubble_sort);
+SORT_ALGO_DECL(quick_sort);
+SORT_ALGO_DECL(fold_sort);
 
 #endif //LIBLAB_ALGO_H

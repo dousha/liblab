@@ -6,6 +6,14 @@
 #include <assert.h>
 #include "linked_list.h"
 
+linked_list_t* linked_list_new(){
+
+}
+
+void linked_list_free(){
+
+}
+
 /**
  * @brief Get the n-th node of a linked list.
  * @details If n is greater than total list size, NULL will be returned.
@@ -13,7 +21,7 @@
  * @param n Index
  * @return Desired node. NULL if the node does not exist.
  */
-const linked_list_t* linked_list_get(const linked_list_t* link, size_t n){
+const linked_list_t* linked_list_get(linked_list_t* link, size_t n){
 	size_t i = n;
 	linked_list_t* now = link;
 	while(i-->0){

@@ -8,5 +8,5 @@ set(SOURCE_FILES
 		strutils.c
 		number.c
 		liblab.h linked_list.c linked_list.h lexer.c lexer.h algo.c algo.h strutils.h
-		bits.c bits.h tree.c tree.h matrix.c matrix.h number.h)
+		bits.c bits.h tree.c tree.h matrix.c matrix.h number.h input.c input.h output.c output.h)
 add_library(liblab ${SOURCE_FILES})

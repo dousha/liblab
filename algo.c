@@ -1,7 +1,7 @@
 #include "algo.h"
 
-OFFSET_FUNC_DECL(int);
-OFFSET_FUNC_DECL(double);
+OFFSET_FUNC_IMPL(int);
+OFFSET_FUNC_IMPL(double);
 
 int8_t int_compare_func(const void *left, const void *right){
 	int l = *((int*) left);
